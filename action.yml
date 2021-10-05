@@ -11,9 +11,13 @@ inputs:
   RESOURCE_GROUP_NAME:  # id of input
     description: 'Resource Group for cluster'
     required: true
+  ARM_SUBSCRIPTION_ID: # id of input
+    description: 'subscription ID'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.ACCOUNT_NAME }}
     - ${{ inputs.RESOURCE_GROUP_NAME }}
+    - ${{ inputs.ARM_SUBSCRIPTION_ID }}
