@@ -10,4 +10,4 @@ echo "Running entrypoint"
 echo "*******************"
 
 
-az cosmosdb create --name $ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --subscription ARM_SUBSCRIPTION_ID
+az cosmosdb create --name $ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --subscription $ARM_SUBSCRIPTION_ID
