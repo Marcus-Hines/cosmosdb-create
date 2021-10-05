@@ -2,4 +2,4 @@ FROM ubuntu:latest
 
 COPY . /action
 
-ENTRYPOINT ["/action/entrypoint.sh"]
+ENTRYPOINT ["chmod", "+x", "/action/entrypoint.sh"]
