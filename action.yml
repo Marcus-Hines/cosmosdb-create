@@ -1,0 +1,19 @@
+# action.yml
+name: 'AKS Create Action'
+description: 'Create an AKS Cluster'
+branding:
+  icon: anchor
+  color: blue
+inputs:
+  ACCOUNT_NAME:
+    description: 'Account name for CosmosDB instance'
+    required: true
+  RESOURCE_GROUP_NAME:  # id of input
+    description: 'Resource Group for cluster'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.ACCOUNT_NAME }}
+    - ${{ inputs.RESOURCE_GROUP_NAME }}
