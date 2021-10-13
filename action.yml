@@ -22,3 +22,6 @@ runs:
     - ${{ inputs.RESOURCE_GROUP_NAME }}
     - ${{ inputs.ARM_SUBSCRIPTION_ID }}
     - ${{ inputs.ARM_TENANT_ID }}
+    - ${{ inputs.SP_USERNAME }}
+    - ${{ inputs.SP_SECRET }}
+    - ${{ inputs.MSI_OBJECT_ID }}
