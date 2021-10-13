@@ -23,6 +23,12 @@ export REGION=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].lo
 export CLUSTER_NAME=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].name' -o tsv)
 export VMSS_NAME=$(az vmss list --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --query '[].name' -o tsv)
 
+echo "*******************"
+echo "VARIABLE DETAILS: "
+echo $VMSS_NAME
+echo "--------"
+echo MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION}
+echo "*******************"
 az vmss identity assign --identities $ACCOUNT_NAME --name $VMSS_NAME --resource-group $RESOURCE_GROUP_NAME
 
 echo "*******************"
