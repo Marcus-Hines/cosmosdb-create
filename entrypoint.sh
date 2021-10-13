@@ -21,7 +21,7 @@ echo "assigning MSI to VMSS"
 
 export REGION=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].location' -o tsv)
 export CLUSTER_NAME=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].name' -o tsv)
-export VMSS_NAME=$(az vmss list --resource-group MC_$RESOURCE_GROUP_NAME_$CLUSTER_NAME_$REGION --query '[].name' -o tsv)
+export VMSS_NAME=$(az vmss list --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --query '[].name' -o tsv)
 
 az vmss identity assign --identities $ACCOUNT_NAME --name $VMSS_NAME --resource-group $RESOURCE_GROUP_NAME
 
