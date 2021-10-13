@@ -14,6 +14,19 @@ inputs:
   ARM_SUBSCRIPTION_ID: # id of input
     description: 'subscription ID'
     required: true
+  ARM_TENANT_ID: # id of input
+    description: 'tenant ID'
+    required: true
+  SP_USERNAME: # id of input
+    description: 'service principle username to log in'
+    required: true
+  SP_SECRET: # id of input
+    description: 'service principle password to log in'
+    required: true
+  MSI_OBJECT_ID: # id of input
+    description: 'MSI object id (service principle id)'
+    required: true
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
