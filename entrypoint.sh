@@ -14,7 +14,7 @@ echo "Running entrypoint"
 echo "*******************"
 
 az login --service-principal -u $SP_USERNAME -p $SP_SECRET --tenant $ARM_TENANT_ID
-# may need to create the msi differently....like not on the cosmos db account. I dont know. The vmss identity command is not finding it
+# may need to create the msi differently....like not on the cosmos db account. I don't know. The vmss identity command is not finding it
 az cosmosdb create --name $ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --subscription $ARM_SUBSCRIPTION_ID
 az cosmosdb sql role assignment create --account-name $ACCOUNT_NAME --resource-group $RESOURCE_GROUP_NAME --scope "/" --principal-id $MSI_OBJECT_ID --role-definition-id 00000000-0000-0000-0000-000000000001
 
@@ -24,6 +24,7 @@ export REGION=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].lo
 export CLUSTER_NAME=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].name' -o tsv)
 export VMSS_NAME=$(az vmss list --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --query '[].name' -o tsv)
 
+az resource move --destination-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --ids $MSI_OBJECT_ID
 az vmss identity assign --identities $MSI_OBJECT_ID --name $VMSS_NAME --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION}
 
 echo "*******************"
