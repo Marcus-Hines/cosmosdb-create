@@ -28,10 +28,10 @@ export VMSS_NAME=$(az vmss list --resource-group MC_${RESOURCE_GROUP_NAME}_${CLU
 
 echo "*******************"
 echo "Assign role for cosmosdb"
-echo "*******************"
+echo "******************* "
 
 az cosmosdb create --name $ACCOUNT_NAME --resource-group ${RESOURCE_GROUP_NAME} --subscription $ARM_SUBSCRIPTION_ID
-az cosmosdb sql role assignment create --account-name $ACCOUNT_NAME --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --scope "/" --principal-id $MSI_OBJECT_ID --role-definition-id 00000000-0000-0000-0000-000000000001
+az cosmosdb sql role assignment create --account-name $ACCOUNT_NAME --resource-group ${RESOURCE_GROUP_NAME} --scope "/" --principal-id $MSI_OBJECT_ID --role-definition-id 00000000-0000-0000-0000-000000000001
 
 echo "*******************"
 echo "Assign MSI to VMSS "
