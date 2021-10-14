@@ -26,6 +26,9 @@ inputs:
   MSI_OBJECT_ID: # id of input
     description: 'MSI object id (service principle id)'
     required: true
+  MSI_NAME: # id of input
+    description: 'MSI name'
+    required: true
 
 runs:
   using: 'docker'
@@ -38,3 +41,4 @@ runs:
     - ${{ inputs.SP_USERNAME }}
     - ${{ inputs.SP_SECRET }}
     - ${{ inputs.MSI_OBJECT_ID }}
+    - ${{ inputs.MSI_NAME }}
