@@ -24,7 +24,7 @@ export REGION=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].lo
 export CLUSTER_NAME=$(az aks list --resource-group $RESOURCE_GROUP_NAME --query '[].name' -o tsv)
 export VMSS_NAME=$(az vmss list --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --query '[].name' -o tsv)
 
-az resource move --destination-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --ids $MSI_OBJECT_ID
+az resource move --destination-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION} --resource-group ${RESOURCE_GROUP_NAME} --ids $MSI_OBJECT_ID
 az vmss identity assign --identities $MSI_OBJECT_ID --name $VMSS_NAME --resource-group MC_${RESOURCE_GROUP_NAME}_${CLUSTER_NAME}_${REGION}
 
 echo "*******************"
